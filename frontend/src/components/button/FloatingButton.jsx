@@ -1,5 +1,5 @@
 import React from "react";
-import ConversionForm from "./ConversionForm";
+// import ConversionForm from "./ConversionForm";
 
 const FloatingButton = () => {
   const handleClick = () => {
@@ -14,11 +14,7 @@ const FloatingButton = () => {
     // Contoh: set state atau gunakan ref untuk mengontrol visibilitas form
   };
 
-  return (
-    <button className="floating-button" onClick={handleClick}>
-      Tampilkan Form
-    </button>
-  );
+  return <button onClick={handleClick}>Setting</button>;
 };
 
 export default FloatingButton;

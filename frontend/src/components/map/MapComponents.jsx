@@ -1,46 +1,50 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import "ol/ol.css";
 import Map from "ol/Map";
 import View from "ol/View";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
+import FloatingButton from "../button/FloatingButton";
 
-class MapComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.mapRef = React.createRef(); // Membuat referensi untuk elemen div peta
-    this.map = null; // Variabel untuk menyimpan objek peta
-  }
+const MapComponent = () => {
+  const mapRef = useRef(null);
 
-  componentDidMount() {
-    // Membuat peta OpenLayers saat komponen dimuat
-    this.map = new Map({
-      target: this.mapRef.current,
-      layers: [
-        new TileLayer({
-          source: new OSM(),
+  // Membuat peta saat komponen dipasang (mount)
+  useEffect(() => {
+    if (mapRef.current) {
+      const map = new Map({
+        target: mapRef.current,
+        layers: [
+          new TileLayer({
+            source: new OSM(),
+          }),
+        ],
+        view: new View({
+          center: [0, 0],
+          zoom: 6,
         }),
-      ],
-      view: new View({
-        center: [0, 0],
-        zoom: 2,
-      }),
-    });
-  }
+      });
 
-  componentWillUnmount() {
-    // Membersihkan peta saat komponen dibongkar
-    if (this.map) {
-      this.map.setTarget(null);
-      this.map = null;
+      // Pastikan elemen HTML memiliki dimensi yang cukup
+      map.setTarget(mapRef.current);
+
+      return () => {
+        // Hapus target peta saat komponen dilepas
+        map.setTarget(null);
+      };
     }
-  }
+  }, [mapRef]);
 
-  render() {
-    return (
-      <div ref={this.mapRef} style={{ width: "100%", height: "1000px" }}></div>
-    );
-  }
-}
+  return (
+    <div className="map-container" style={{ position: "relative", width: "100%", height: "670px", border: "3px solid blue", marginTop:"20px", borderRadius: "5px" }}>
+      {/* <FloatingButton  /> */}
+      <div ref={mapRef} style={{ width: "100%", height: "100%" }} />
+    </div>
+    // <div className="map-container relative w-full h-700 border-3 border-black mx-1">
+    //   <FloatingButton className="absolute bottom-10 right-10" />
+    //   <div ref={mapRef} className="w-full h-95" />
+    // </div>
+  );
+};
 
 export default MapComponent;
