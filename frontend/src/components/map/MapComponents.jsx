@@ -36,7 +36,7 @@ const MapComponent = () => {
   }, [mapRef]);
 
   return (
-    <div className="map-container" style={{ position: "relative", width: "100%", height: "670px", border: "3px solid blue", marginTop:"20px", borderRadius: "5px" }}>
+    <div className="map-container" style={{ position: "relative", width: "100%", height: "670px", border: "3px solid green", marginTop:"20px", borderRadius: "5px" }}>
       {/* <FloatingButton  /> */}
       <div ref={mapRef} style={{ width: "100%", height: "100%" }} />
     </div>
