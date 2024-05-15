@@ -1,7 +1,5 @@
 # Longitude-Latitude-Conversion
 
-# Structur project 
-
 # Description
  Longitude and latitude are geographic coordinates used to determine the location of a point on the Earth's surface. The combination of longitude and latitude allows for the precise determination of a location on the Earth's surface and is commonly used in geographic coordinate systems for navigation, mapping, and other applications.
 
@@ -16,6 +14,8 @@
 # Running the project
 1. To run the project, use the following command
    - npm run dev
+
+ # Project Structure
   
  # Things that have been done from this project
  1. Functionality
@@ -25,4 +25,6 @@
  # Things haven't been done yet
  1. Integration of OpenLayers Map with Conversion Form.
     - Not yet implemented as it requires more time to explore the OpenLayers library.
+ 2. Creating unit tests.
+    - Cannot be done yet, as all features have not been implemented.
  
