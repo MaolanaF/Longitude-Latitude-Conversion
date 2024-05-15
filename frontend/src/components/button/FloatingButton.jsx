@@ -1,35 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import SettingsIcon from "@mui/icons-material/Settings";
-import FormInput from "../form/FormInput";
+import ConversionForm from "../form/FormInput";
+import { Modal } from "@mui/material";
 
 const FloatingButton = () => {
-  const handleClick = () => {
-    // Logika untuk menampilkan form
-    console.log("Tombol ditekan");
-    // Panggil fungsi untuk menampilkan form
-    showForm();
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const handleOpenForm = () => {
+    setIsFormOpen(true);
   };
 
-  const showForm = () => {
-    // Tambahkan logika untuk menampilkan form di sini
-    // Contoh: set state atau gunakan ref untuk mengontrol visibilitas form
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
   };
 
   return (
-    <IconButton
-      onClick={handleClick}
-      aria-label="Settings"
-      style={{
-        backgroundColor: "#a0d468", // Warna hijau muda
-        "&:hover": {
-          backgroundColor: "#8cc152", // Warna hijau muda lebih gelap saat dihover
-        },
-        marginTop: "10px" // Menambahkan margin atas 2px
-      }}
-    >
-      <SettingsIcon />
-    </IconButton>
+    <div>
+      {isFormOpen? (
+        <Modal open={isFormOpen} onClose={handleCloseForm}>
+          <ConversionForm onClose={handleCloseForm} />
+        </Modal>
+      ) : (
+        <IconButton
+          onClick={handleOpenForm}
+          aria-label="Settings"
+          style={{
+            backgroundColor: "#a0d468",
+            "&:hover": {
+              backgroundColor: "#8cc152",
+            },
+            marginTop: "10px",
+          }}
+        >
+          <SettingsIcon />
+        </IconButton>
+      )}
+    </div>
   );
 };
 
