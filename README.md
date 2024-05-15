@@ -16,7 +16,41 @@
    - npm run dev
 
  # Project Structure
-  
+```
+Frontend
+└───public
+    │   Vite.svg
+└───src
+│   │
+│   └───assets
+│   │   |
+│   └───components
+│   │   │
+│   │   └───button
+│   │   │   │   FloatingButton.jsx
+│   │   │   │
+│   │   └───form
+│   │   │   │   FormInput.jsx
+│   │   │   │   DMStoDDConverter.jsx
+│   │   │   │   DDtoDMSConverter.jsx
+│   │   │   │
+│   │   └───map
+│   │   |   │   MapComponents.jsx
+│   │   │   │
+│   │   app.css
+│   │   app.jsx
+│   │   index.css
+│   │   main.jsx
+│   README.md
+│   .gitignore
+│   eslintrc.cjs
+│   index.html
+│   package-lock.json
+│   package.json
+│   postcss.config.js
+│   tailwind.config.js
+│   vite.config.js
+``` 
  # Things that have been done from this project
  1. Functionality
     - Creating an OSM Map Display using the OpenLayers Library and creating a floating button that will later display a popup form for latitude and longitude conversion.
